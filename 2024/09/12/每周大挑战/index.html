@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>每周大挑战 | welcome2小神龙俱乐部</title><meta name="author" content="robe1t"><meta name="copyright" content="robe1t"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="# 每周大挑战 # 每周大挑战 1 题目 hint 是 spring 信息泄露 先随便输点东西在输入框抓个包看看是不是有可以注入啥的，然后尝试着爆破一下（爆破字典）弱口令密码，爆破到 admin 123456  是可以登陆进去的，但是什么东西都没有– 那就 dirsearch 扫描一下，扫到了很多目录，一个一个看  在 env 目录里面直接能看到 flag（非预期解） 有一个 heapdump 目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每周大挑战">
+<meta property="og:url" content="https://robe1t.github.io/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/index.html">
+<meta property="og:site_name" content="welcome2小神龙俱乐部">
+<meta property="og:description" content="# 每周大挑战 # 每周大挑战 1 题目 hint 是 spring 信息泄露 先随便输点东西在输入框抓个包看看是不是有可以注入啥的，然后尝试着爆破一下（爆破字典）弱口令密码，爆破到 admin 123456  是可以登陆进去的，但是什么东西都没有– 那就 dirsearch 扫描一下，扫到了很多目录，一个一个看  在 env 目录里面直接能看到 flag（非预期解） 有一个 heapdump 目">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://robe1t.github.io/img/me.jpg">
+<meta property="article:published_time" content="2024-09-12T06:22:44.000Z">
+<meta property="article:modified_time" content="2024-11-19T08:02:22.418Z">
+<meta property="article:author" content="robe1t">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://robe1t.github.io/img/me.jpg"><link rel="shortcut icon" href="/img/%E8%9B%8B%E7%B3%95.ico"><link rel="canonical" href="https://robe1t.github.io/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '每周大挑战',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-11-19 16:02:22'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/me.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="welcome2小神龙俱乐部"><span class="site-name">welcome2小神龙俱乐部</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">每周大挑战</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-12T06:22:44.000Z" title="发表于 2024-09-12 14:22:44">2024-09-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-19T08:02:22.418Z" title="更新于 2024-11-19 16:02:22">2024-11-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="每周大挑战"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="每周大挑战"><a class="markdownIt-Anchor" href="#每周大挑战">#</a> 每周大挑战</h1>
+<h2 id="每周大挑战1"><a class="markdownIt-Anchor" href="#每周大挑战1">#</a> 每周大挑战 1</h2>
+<p>题目 hint 是 spring 信息泄露</p>
+<p>先随便输点东西在输入框抓个包看看是不是有可以注入啥的，然后尝试着爆破一下（爆破字典）弱口令密码，爆破到 admin 123456</p>
+<p><img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240521223447327-1718783247836-20.png" alt="image-20240521223447327"> 是可以登陆进去的，但是什么东西都没有–</p>
+<p>那就 dirsearch 扫描一下，扫到了很多目录，一个一个看</p>
+<p><img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240521213308606.png" alt="image-20240521213308606"></p>
+<p>在 env 目录里面直接能看到 flag（非预期解）</p>
+<p>有一个 heapdump 目录，打开直接下载了一个名为 heapdump 的文件，然后百度搜一下，找了个工具！！<a href="./%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240521221707710.png">image-20240521221707710</a></p>
+<p>把工具和文件放同一个目录下面</p>
+<p>启动工具查看这个文件</p>
+<p><img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240521222512707.png" alt="image-20240521222512707"></p>
+<p>然后看到了里面有一个 key，是 shiro 框架的密钥（由于这个 key 是自定义的所以爆破不出来）</p>
+<p>再打开 shiro 反序列化 balabala 工具，放进这个 key</p>
+<p><img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240521223143302.png" alt="image-20240521223143302"></p>
+<p>就可以做命令执行了，然后 ls 看到 fllllag</p>
+<p>cat 一下这个文件拿到 flag</p>
+<p><img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240521223255386.png" alt="image-20240521223255386"></p>
+<h2 id="每周大挑战2"><a class="markdownIt-Anchor" href="#每周大挑战2">#</a> 每周大挑战 2</h2>
+<p>开局一个 jar 包</p>
+<p><img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240522203106736.png" alt="image-20240522203106736"></p>
+<p>看了看 hint 去搜了反编译 jar 包</p>
+<p>下载 jadx 反编译工具（下载链接：<a target="_blank" rel="noopener" href="https://github.com/skylot/jadx%EF%BC%89">https://github.com/skylot/jadx）</a></p>
+<p>上网搜了下 idea 也能反编译，于是下了个插件</p>
+<p>（好像是 idea 自带的？？？插件名字：Java Bytecode Decompiler ）</p>
+<p>反编译参考博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/zy103118/article/details/125198688">利用 intellij idea 工具如何反编译.jar_jar 包反编译 - CSDN 博客</a></p>
+<p>然后反编译一下 jar 包解压在 idea 里面就能打开，目录一路往下翻看到这个 shiroconfig 文件里面有 rememberMe_2024 的字段，然后提交 question1，flag 正确</p>
+<p><img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240522203538536.png" alt="image-20240522203538536"></p>
+<p>打开 jadx 工具，在里面搜索 rememberme 字段但是没看到有 key 的相关东西，把类名加上，再搜索看到了 DEFAULT_CIPHER_KEY_BYTES 的字段，后面还跟了一段看着像 base64 编码的字符串，那八九不离十就是加密的 key 了，复制过去提交显示 flag 正确</p>
+<p><img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240522204140699.png" alt="image-20240522204140699"></p>
+<p>参考博客：<a target="_blank" rel="noopener" href="https://chenxi9981.github.io/RealWorld/">https://chenxi9981.github.io/RealWorld/</a></p>
+<p>接着复制博客中的代码过来</p>
+<p><img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240528193104088.png" alt="image-20240528193104088"></p>
+<p>新建这两个类，然后运行（注意 class 文件的地址要改成自己电脑上的路径）</p>
+<p>再新建 exp.py 终端运行一下 (去文件所在位置开终端，在 idea 里面的终端自带换行没法直接复制使用)</p>
+<p>!!<a href="./%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240528235138755.png">image-20240528235138755</a></p>
+<p>然后在 hackbar 里面添加一个 cooki<img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240528235233047.png" alt="image-20240528235233047"></p>
+<p>在攻击机里监听端口并拿到 flag</p>
+<p><img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240528235347736.png" alt="image-20240528235347736"></p>
+<h3 id="遇到的问题"><a class="markdownIt-Anchor" href="#遇到的问题">#</a> 遇到的问题</h3>
+<p>idea 的 jdk 下载：Oracle 官网</p>
+<p>nc 时候监听不到：myclassloader 的 ip 没有换成攻击机的 ip</p>
+<p><img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240528235541719.png" alt="image-20240528235541719"></p>
+<p>hackbar 的 cookie 输入不正确（多打了一个空格）</p>
+<p>搬 exp.py 的时候命令行运行不了：python 环境不对，重新下载了 python3</p>
+<p>依赖链的判断（最开始的 app.jar 包里能看到 cb 链）</p>
+<p>依赖的导入（pom.xml）</p>
+<h2 id="每周大挑战3"><a class="markdownIt-Anchor" href="#每周大挑战3">#</a> 每周大挑战 3</h2>
+<h5 id="login"><a class="markdownIt-Anchor" href="#login">#</a> Login</h5>
+<p>反编译 jar 包，可以看到反编译的 jar 包依赖位于的目录和 fastjson 版本</p>
+<p><img src="/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/image-20240608011002924.png" alt="image-20240608011002924"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://robe1t.github.io">robe1t</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://robe1t.github.io/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/">https://robe1t.github.io/2024/09/12/%E6%AF%8F%E5%91%A8%E5%A4%A7%E6%8C%91%E6%88%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://robe1t.github.io" target="_blank">welcome2小神龙俱乐部</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/me.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2024/09/12/BaseCTF/" title="BaseCTF"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">BaseCTF</div></div></a></div></nav></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2020 - 2024 By robe1t</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
